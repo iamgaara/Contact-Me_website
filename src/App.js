@@ -1,24 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Navbar from './Components/NavbarComp'; // Ensure this path is correct
+import Home from './Components/Home'; // Ensure this path is correct
+import About from './Components/About'; // Ensure this path is correct
+import Contact from './Components/Contact'; // Ensure this path is correct
+import ContactForm from './ContactUs'; // Ensure this path is correct
+import Footer from './Footer'; // Import the Footer component
+
 
 function App() {
+  const appStyle = {
+    textAlign: 'center',
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+        <Navbar />
+        <main style={{ flex: 1 }}>
+          <Routes>
+            <Route path="/home" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/" element={<Home />} />
+          </Routes>
+          <ContactForm />
+        </main>
+        <Footer />
+      </div>
+    </Router>
   );
 }
 
