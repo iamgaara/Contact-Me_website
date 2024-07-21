@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
+import { Box, Button, TextField, Typography } from '@mui/material';
 
 const ContactForm = () => {
   const form = useRef();
@@ -8,11 +9,12 @@ const ContactForm = () => {
   const handleSave = () => {
     const formData = new FormData(form.current);
     const name = formData.get('user_name');
+    const phone = formData.get('user_phone');
     const email = formData.get('user_email');
     const message = formData.get('message');
 
     if (!name || !email || !message) {
-      setError('All fields are required.');
+      setError('All fields except phone number are required.');
       return;
     }
 
@@ -21,6 +23,7 @@ const ContactForm = () => {
     // Save data to localStorage
     localStorage.setItem('contactForm', JSON.stringify({
       name,
+      phone,
       email,
       message
     }));
@@ -33,11 +36,12 @@ const ContactForm = () => {
     
     const formData = new FormData(form.current);
     const name = formData.get('user_name');
+    const phone = formData.get('user_phone');
     const email = formData.get('user_email');
     const message = formData.get('message');
     
     if (!name || !email || !message) {
-      setError('All fields are required.');
+      setError('All fields except phone number are required.');
       return;
     }
 
@@ -55,68 +59,64 @@ const ContactForm = () => {
       });
   };
 
-  const formStyle = {
-    display: 'flex',
-    flexDirection: 'column',
-    width: '100%',
-    maxWidth: '600px',
-    margin: 'auto',
-    padding: '20px',
-    borderRadius: '8px',
-    boxShadow: '0 0 10px rgba(0,0,0,0.1)',
-    backgroundColor: '#f9f9f9'
-  };
-
-  const inputStyle = {
-    padding: '10px',
-    margin: '5px 0',
-    borderRadius: '4px',
-    border: '1px solid #ddd',
-    boxSizing: 'border-box',
-  };
-
-  const textareaStyle = {
-    ...inputStyle,
-    minHeight: '150px',
-  };
-
-  const labelStyle = {
-    margin: '10px 0 5px',
-    fontWeight: 'bold',
-  };
-
-  const buttonStyle = {
-    padding: '10px 15px',
-    border: 'none',
-    borderRadius: '4px',
-    backgroundColor: '#4CAF50',
-    color: 'white',
-    cursor: 'pointer',
-    fontSize: '16px',
-    marginTop: '10px',
-    marginRight: '10px',
-  };
-
-  const errorStyle = {
-    color: 'red',
-    fontSize: '14px',
-    marginTop: '10px',
-  };
-
   return (
-    <form ref={form} onSubmit={sendEmail} style={formStyle}>
-      <label style={labelStyle}>Name</label>
-      <input type="text" name="user_name" style={inputStyle} />
-      <label style={labelStyle}>Email</label>
-      <input type="email" name="user_email" style={inputStyle} />
-      <label style={labelStyle}>Message</label>
-      <textarea name="message" style={textareaStyle} />
-      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-        <button type="button" onClick={handleSave} style={buttonStyle}>Save</button>
-        <button type="submit" style={buttonStyle}>Send</button>
-      </div>
-      {error && <div style={errorStyle}>{error}</div>}
-    </form>
+    <Box
+      component="form"
+      ref={form}
+      onSubmit={sendEmail}
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        maxWidth: '600px',
+        margin: 'auto',
+        padding: '20px',
+        borderRadius: '8px',
+        boxShadow: '0 0 10px rgba(0,0,0,0.1)',
+        backgroundColor: '#f9f9f9'
+      }}
+    >
+      <Typography variant="h4" gutterBottom>Get In Touch</Typography>
+      <Typography variant="subtitle1" gutterBottom>We'd love to hear from you. Please fill out the form below.</Typography>
+      <TextField
+        label="Name"
+        name="user_name"
+        placeholder="Enter your name"
+        variant="outlined"
+        margin="normal"
+        fullWidth
+      />
+      <TextField
+        label="Phone Number (optional)"
+        name="user_phone"
+        placeholder="Enter your phone number"
+        variant="outlined"
+        margin="normal"
+        fullWidth
+      />
+      <TextField
+        label="Email"
+        name="user_email"
+        placeholder="Enter your email"
+        variant="outlined"
+        margin="normal"
+        fullWidth
+      />
+      <TextField
+        label="How may we help you?"
+        name="message"
+        placeholder="Enter your message"
+        variant="outlined"
+        margin="normal"
+        fullWidth
+        multiline
+        rows={4}
+      />
+      <Box sx={{ display: 'flex', justifyContent: 'space-between', marginTop: '20px' }}>
+        <Button variant="contained" color="primary" onClick={handleSave}>Save</Button>
+        <Button variant="contained" color="secondary" type="submit">Send</Button>
+      </Box>
+      {error && <Typography color="error" sx={{ marginTop: '20px' }}>{error}</Typography>}
+    </Box>
   );
 };
 
