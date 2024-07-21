@@ -29,6 +29,7 @@ const FAQCarousel = () => {
         borderRadius: 2,
         overflow: 'hidden',
         margin: 'auto', // Center align horizontally
+        textAlign: 'center', // Center text horizontally
       }}
     >
       <Typography variant="h4" gutterBottom sx={{ fontStyle: 'italic' }}>
@@ -49,7 +50,6 @@ const FAQCarousel = () => {
               minWidth: '100%',
               padding: 2,
               boxSizing: 'border-box',
-              textAlign: 'center', // Center text horizontally
             }}
           >
             <Typography variant="h6">{item.question}</Typography>
