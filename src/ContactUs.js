@@ -73,11 +73,28 @@ const ContactForm = () => {
         borderRadius: '8px',
         boxShadow: '0 0 10px rgba(0,0,0,0.1)',
         backgroundColor: '#f9f9f9',
-        textAlign: 'center' // Center text alignment
+        textAlign: 'center', // Center text horizontally
+        fontFamily: "'Georgia', serif" // Apply classical font
       }}
     >
-      <Typography variant="h4" gutterBottom>Get In Touch</Typography>
-      <Typography variant="subtitle1" gutterBottom>We'd love to hear from you. Please fill out the form below.</Typography>
+      <Typography 
+        variant="h4" 
+        gutterBottom 
+        sx={{ 
+          fontStyle: 'italic' 
+        }}
+      >
+        Get In Touch
+      </Typography>
+      <Typography 
+        variant="subtitle1" 
+        gutterBottom 
+        sx={{ 
+          fontFamily: "'Times New Roman', serif" // Apply classical font
+        }}
+      >
+        We'd love to hear from you. Please fill out the form below.
+      </Typography>
       <TextField
         label="Name"
         name="user_name"
@@ -85,6 +102,7 @@ const ContactForm = () => {
         variant="outlined"
         margin="normal"
         fullWidth
+        sx={{ fontFamily: "'Times New Roman', serif" }} // Apply classical font
       />
       <TextField
         label="Phone Number (optional)"
@@ -93,6 +111,7 @@ const ContactForm = () => {
         variant="outlined"
         margin="normal"
         fullWidth
+        sx={{ fontFamily: "'Times New Roman', serif" }} // Apply classical font
       />
       <TextField
         label="Email"
@@ -101,6 +120,7 @@ const ContactForm = () => {
         variant="outlined"
         margin="normal"
         fullWidth
+        sx={{ fontFamily: "'Times New Roman', serif" }} // Apply classical font
       />
       <TextField
         label="How may we help you?"
@@ -111,12 +131,13 @@ const ContactForm = () => {
         fullWidth
         multiline
         rows={4}
+        sx={{ fontFamily: "'Times New Roman', serif" }} // Apply classical font
       />
       <Box sx={{ display: 'flex', justifyContent: 'space-between', marginTop: '20px' }}>
         <Button variant="contained" color="primary" onClick={handleSave}>Save</Button>
         <Button variant="contained" color="secondary" type="submit">Send</Button>
       </Box>
-      {error && <Typography color="error" sx={{ marginTop: '20px' }}>{error}</Typography>}
+      {error && <Typography color="error" sx={{ marginTop: '20px', fontFamily: "'Times New Roman', serif" }}>{error}</Typography>}
     </Box>
   );
 };
