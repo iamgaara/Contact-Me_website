@@ -1,25 +1,27 @@
 import React, { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 import { Box, Button, TextField, Typography } from '@mui/material';
+import PhoneInput from 'react-phone-number-input';
+import 'react-phone-number-input/style.css'; // Import the style for phone number input
 
 const ContactForm = () => {
   const form = useRef();
   const [error, setError] = useState('');
+  const [phone, setPhone] = useState(''); // State for phone number
 
   const validateEmail = (email) => {
-    const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    return re.test(email);
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailPattern.test(email);
   };
 
   const validatePhone = (phone) => {
-    const re = /^[0-9+\-() ]+$/; // Basic phone number validation
-    return re.test(phone);
+    // Phone validation is handled by react-phone-number-input, but you can add more checks if needed
+    return phone && phone.length >= 10; // Simple check, adjust as necessary
   };
 
   const handleSave = () => {
     const formData = new FormData(form.current);
     const name = formData.get('user_name');
-    const phone = formData.get('user_phone');
     const email = formData.get('user_email');
     const message = formData.get('message');
 
@@ -33,7 +35,7 @@ const ContactForm = () => {
       return;
     }
 
-    if (phone && !validatePhone(phone)) {
+    if (!validatePhone(phone)) {
       alert('Please enter a valid phone number.');
       return;
     }
@@ -53,13 +55,12 @@ const ContactForm = () => {
 
   const sendEmail = (e) => {
     e.preventDefault();
-
+    
     const formData = new FormData(form.current);
     const name = formData.get('user_name');
-    const phone = formData.get('user_phone');
     const email = formData.get('user_email');
     const message = formData.get('message');
-
+    
     if (!name || !email || !message) {
       setError('All fields except phone number are required.');
       return;
@@ -70,7 +71,7 @@ const ContactForm = () => {
       return;
     }
 
-    if (phone && !validatePhone(phone)) {
+    if (!validatePhone(phone)) {
       alert('Please enter a valid phone number.');
       return;
     }
@@ -79,13 +80,13 @@ const ContactForm = () => {
 
     emailjs.sendForm('YOUR_ACTUAL_SERVICE_ID', 'YOUR_ACTUAL_TEMPLATE_ID', form.current, 'YOUR_ACTUAL_USER_ID')
       .then((result) => {
-        console.log(result.text);
-        alert('Message sent successfully!');
-        form.current.reset();
-        localStorage.removeItem('contactForm'); // Clear saved data after sending
+          console.log(result.text);
+          alert('Message sent successfully!');
+          form.current.reset();
+          localStorage.removeItem('contactForm'); // Clear saved data after sending
       }, (error) => {
-        console.log(error.text);
-        setError('Failed to send message. Please try again.');
+          console.log(error.text);
+          setError('Failed to send message. Please try again.');
       });
   };
 
@@ -103,26 +104,14 @@ const ContactForm = () => {
         borderRadius: '8px',
         boxShadow: '0 0 10px rgba(0,0,0,0.1)',
         backgroundColor: '#f9f9f9',
-        textAlign: 'center', // Center text horizontally
-        fontFamily: "'Georgia', serif" // Apply classical font
+        textAlign: 'center',
+        fontFamily: "'Georgia', serif"
       }}
     >
-      <Typography 
-        variant="h4" 
-        gutterBottom 
-        sx={{ 
-          fontStyle: 'italic' 
-        }}
-      >
+      <Typography variant="h4" gutterBottom sx={{ fontStyle: 'italic' }}>
         Get In Touch
       </Typography>
-      <Typography 
-        variant="subtitle1" 
-        gutterBottom 
-        sx={{ 
-          fontFamily: "'Times New Roman', serif" // Apply classical font
-        }}
-      >
+      <Typography variant="subtitle1" gutterBottom sx={{ fontFamily: "'Times New Roman', serif" }}>
         We'd love to hear from you. Please fill out the form below.
       </Typography>
       <TextField
@@ -132,17 +121,32 @@ const ContactForm = () => {
         variant="outlined"
         margin="normal"
         fullWidth
-        sx={{ fontFamily: "'Times New Roman', serif" }} // Apply classical font
+        sx={{ fontFamily: "'Times New Roman', serif" }}
       />
-      <TextField
-        label="Phone Number (optional)"
-        name="user_phone"
-        placeholder="Enter your phone number"
-        variant="outlined"
-        margin="normal"
-        fullWidth
-        sx={{ fontFamily: "'Times New Roman', serif" }} // Apply classical font
-      />
+      <Box
+        sx={{
+          margin: 'normal',
+          width: '100%',
+          '.PhoneInput': {
+            width: '100%',
+            borderRadius: '4px',
+            border: '1px solid #ccc',
+            boxShadow: 'inset 0 1px 2px rgba(0,0,0,0.1)',
+            height: '56px', // Match height with TextField
+            fontFamily: "'Times New Roman', serif",
+            padding: '10px',
+            boxSizing: 'border-box',
+          },
+        }}
+      >
+        <PhoneInput
+          international
+          defaultCountry="US"
+          value={phone}
+          onChange={setPhone}
+          placeholder="Enter phone number"
+        />
+      </Box>
       <TextField
         label="Email"
         name="user_email"
@@ -150,7 +154,7 @@ const ContactForm = () => {
         variant="outlined"
         margin="normal"
         fullWidth
-        sx={{ fontFamily: "'Times New Roman', serif" }} // Apply classical font
+        sx={{ fontFamily: "'Times New Roman', serif" }}
       />
       <TextField
         label="How may we help you?"
@@ -161,7 +165,7 @@ const ContactForm = () => {
         fullWidth
         multiline
         rows={4}
-        sx={{ fontFamily: "'Times New Roman', serif" }} // Apply classical font
+        sx={{ fontFamily: "'Times New Roman', serif" }}
       />
       <Box sx={{ display: 'flex', justifyContent: 'space-between', marginTop: '20px' }}>
         <Button variant="contained" color="primary" onClick={handleSave}>Save</Button>
