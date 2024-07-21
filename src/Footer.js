@@ -87,22 +87,22 @@ const Footer = () => {
           },
         }}
       >
-        <Link href="#" sx={{ color: 'white', fontSize: { xs: '16px', sm: '20px' } }}>
+        <Link href="#" sx={{ color: 'white', fontSize: { xs: '10px', sm: '20px' } }}>
           <FaFacebookF />
         </Link>
-        <Link href="#" sx={{ color: 'white', fontSize: { xs: '16px', sm: '20px' } }}>
+        <Link href="#" sx={{ color: 'white', fontSize: { xs: '10px', sm: '20px' } }}>
           <FaTwitter />
         </Link>
-        <Link href="#" sx={{ color: 'white', fontSize: { xs: '16px', sm: '20px' } }}>
+        <Link href="#" sx={{ color: 'white', fontSize: { xs: '10px', sm: '20px' } }}>
           <FaInstagram />
         </Link>
-        <Link href="#" sx={{ color: 'white', fontSize: { xs: '16px', sm: '20px' } }}>
+        <Link href="#" sx={{ color: 'white', fontSize: { xs: '10px', sm: '20px' } }}>
           <FaLinkedinIn />
         </Link>
-        <Link href="#" sx={{ color: 'white', fontSize: { xs: '16px', sm: '20px' } }}>
+        <Link href="#" sx={{ color: 'white', fontSize: { xs: '10px', sm: '20px' } }}>
           <FaRedditAlien />
         </Link>
-        <Link href="#" sx={{ color: 'white', fontSize: { xs: '16px', sm: '20px' } }}>
+        <Link href="#" sx={{ color: 'white', fontSize: { xs: '10px', sm: '20px' } }}>
           <FaDiscord />
         </Link>
       </Box>
