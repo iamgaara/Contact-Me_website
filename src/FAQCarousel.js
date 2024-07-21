@@ -1,76 +1,32 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Box, Typography } from '@mui/material';
 
-const carouselItems = [
-  { id: 1, question: "What is manga?", answer: "Manga are Japanese comic books or graphic novels." },
-  { id: 2, question: "How can I buy manga?", answer: "You can purchase manga directly from our website." },
-  { id: 3, question: "Do you offer international shipping?", answer: "Yes, we ship manga worldwide." },
-  { id: 4, question: "Can I return a manga?", answer: "Yes, we accept returns within 30 days of purchase." },
-];
-
 const FAQCarousel = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % carouselItems.length);
-    }, 4000); // Change slide every 4 seconds
-
-    return () => clearInterval(interval); // Cleanup on unmount
-  }, []);
-
   return (
     <Box
       sx={{
-        width: '100%',
-        maxWidth: '600px', // Adjust maximum width for larger screens
-        padding: 2,
-        backgroundColor: '#f5f5f5',
-        borderRadius: 2,
-        overflow: 'hidden',
-        margin: 'auto', // Center align horizontally
-        textAlign: 'center', // Center text horizontally
+        maxWidth: '600px',
+        margin: 'auto',
+        padding: '20px',
+        borderRadius: '12px',
+        boxShadow: '0 4px 8px rgba(0,0,0,0.2)',
+        backgroundColor: 'rgba(255, 255, 255, 0.3)', // Lower opacity
+        backdropFilter: 'blur(10px)', // Glass effect
+        textAlign: 'center',
+        fontFamily: "'Georgia', serif",
+        '@media (max-width:600px)': {
+          padding: '15px',
+        },
+        '@media (max-width:400px)': {
+          padding: '10px',
+        },
+        marginBottom: '20px', // Add space between FAQCarousel and ContactForm
       }}
     >
-      <Typography 
-        variant="h4" 
-        gutterBottom 
-        sx={{ 
-          fontStyle: 'italic', 
-          fontFamily: "'Georgia', serif" // Classic font for heading
-        }}
-      >
+      <Typography variant="h4" gutterBottom sx={{ fontStyle: 'italic', color: '#333' }}>
         Frequently Asked Questions
       </Typography>
-      <Box
-        sx={{
-          display: 'flex',
-          flexDirection: 'row',
-          transition: 'transform 0.5s ease-in-out',
-          transform: `translateX(-${currentIndex * 100}%)`,
-        }}
-      >
-        {carouselItems.map((item) => (
-          <Box
-            key={item.id}
-            sx={{
-              minWidth: '100%',
-              padding: 2,
-              boxSizing: 'border-box',
-            }}
-          >
-            <Typography 
-              variant="h6" 
-              sx={{ fontFamily: "'Times New Roman', serif" }} // Classic font for questions
-            >
-              {item.question}
-            </Typography>
-            <Typography sx={{ fontFamily: "'Times New Roman', serif" }}>
-              {item.answer}
-            </Typography>
-          </Box>
-        ))}
-      </Box>
+      {/* Add your carousel items here */}
     </Box>
   );
 };
