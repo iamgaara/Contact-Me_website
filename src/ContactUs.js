@@ -145,6 +145,7 @@ const ContactForm = () => {
           value={phone}
           onChange={setPhone}
           placeholder="Enter phone number"
+          style={{ width: '100%' }} // Ensures full width
         />
       </Box>
       <TextField
@@ -168,8 +169,32 @@ const ContactForm = () => {
         sx={{ fontFamily: "'Times New Roman', serif" }}
       />
       <Box sx={{ display: 'flex', justifyContent: 'space-between', marginTop: '20px' }}>
-        <Button variant="contained" color="primary" onClick={handleSave}>Save</Button>
-        <Button variant="contained" color="secondary" type="submit">Send</Button>
+        <Button 
+          variant="contained" 
+          color="primary" 
+          onClick={handleSave}
+          sx={{ 
+            backgroundColor: '#007bff', // Blue color
+            '&:hover': {
+              backgroundColor: '#0056b3', // Darker blue on hover
+            },
+          }}
+        >
+          Save
+        </Button>
+        <Button 
+          variant="contained" 
+          color="primary" 
+          type="submit"
+          sx={{ 
+            backgroundColor: '#007bff', // Blue color
+            '&:hover': {
+              backgroundColor: '#0056b3', // Darker blue on hover
+            },
+          }}
+        >
+          Send
+        </Button>
       </Box>
       {error && <Typography color="error" sx={{ marginTop: '20px', fontFamily: "'Times New Roman', serif" }}>{error}</Typography>}
     </Box>
