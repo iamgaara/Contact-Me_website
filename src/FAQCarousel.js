@@ -32,7 +32,14 @@ const FAQCarousel = () => {
         textAlign: 'center', // Center text horizontally
       }}
     >
-      <Typography variant="h4" gutterBottom sx={{ fontStyle: 'italic' }}>
+      <Typography 
+        variant="h4" 
+        gutterBottom 
+        sx={{ 
+          fontStyle: 'italic', 
+          fontFamily: "'Georgia', serif" // Classic font for heading
+        }}
+      >
         Frequently Asked Questions
       </Typography>
       <Box
@@ -52,8 +59,15 @@ const FAQCarousel = () => {
               boxSizing: 'border-box',
             }}
           >
-            <Typography variant="h6">{item.question}</Typography>
-            <Typography>{item.answer}</Typography>
+            <Typography 
+              variant="h6" 
+              sx={{ fontFamily: "'Times New Roman', serif" }} // Classic font for questions
+            >
+              {item.question}
+            </Typography>
+            <Typography sx={{ fontFamily: "'Times New Roman', serif" }}>
+              {item.answer}
+            </Typography>
           </Box>
         ))}
       </Box>
