@@ -101,17 +101,24 @@ const ContactForm = () => {
         maxWidth: '600px',
         margin: 'auto',
         padding: '20px',
-        borderRadius: '8px',
-        boxShadow: '0 0 10px rgba(0,0,0,0.1)',
-        backgroundColor: '#f9f9f9',
+        borderRadius: '12px',
+        boxShadow: '0 4px 8px rgba(0,0,0,0.2)',
+        backgroundColor: 'rgba(255, 255, 255, 0.3)', // Lower opacity
+        backdropFilter: 'blur(10px)', // Glass effect
         textAlign: 'center',
-        fontFamily: "'Georgia', serif"
+        fontFamily: "'Georgia', serif",
+        '@media (max-width:600px)': {
+          padding: '15px',
+        },
+        '@media (max-width:400px)': {
+          padding: '10px',
+        },
       }}
     >
-      <Typography variant="h4" gutterBottom sx={{ fontStyle: 'italic' }}>
+      <Typography variant="h4" gutterBottom sx={{ fontStyle: 'italic', color: '#333' }}>
         Get In Touch
       </Typography>
-      <Typography variant="subtitle1" gutterBottom sx={{ fontFamily: "'Times New Roman', serif" }}>
+      <Typography variant="subtitle1" gutterBottom sx={{ color: '#555' }}>
         We'd love to hear from you. Please fill out the form below.
       </Typography>
       <TextField
@@ -121,7 +128,7 @@ const ContactForm = () => {
         variant="outlined"
         margin="normal"
         fullWidth
-        sx={{ fontFamily: "'Times New Roman', serif" }}
+        sx={{ fontFamily: "'Times New Roman', serif", '& .MuiInputLabel-root': { color: '#666' } }}
       />
       <Box
         sx={{
@@ -155,7 +162,7 @@ const ContactForm = () => {
         variant="outlined"
         margin="normal"
         fullWidth
-        sx={{ fontFamily: "'Times New Roman', serif" }}
+        sx={{ fontFamily: "'Times New Roman', serif", '& .MuiInputLabel-root': { color: '#666' } }}
       />
       <TextField
         label="How may we help you?"
@@ -166,7 +173,7 @@ const ContactForm = () => {
         fullWidth
         multiline
         rows={4}
-        sx={{ fontFamily: "'Times New Roman', serif" }}
+        sx={{ fontFamily: "'Times New Roman', serif", '& .MuiInputLabel-root': { color: '#666' } }}
       />
       <Box sx={{ display: 'flex', justifyContent: 'space-between', marginTop: '20px' }}>
         <Button 
@@ -178,6 +185,10 @@ const ContactForm = () => {
             '&:hover': {
               backgroundColor: '#0056b3', // Darker blue on hover
             },
+            borderRadius: '20px',
+            padding: '10px 20px',
+            fontWeight: 'bold',
+            transition: 'background-color 0.3s ease',
           }}
         >
           Save
@@ -191,12 +202,16 @@ const ContactForm = () => {
             '&:hover': {
               backgroundColor: '#0056b3', // Darker blue on hover
             },
+            borderRadius: '20px',
+            padding: '10px 20px',
+            fontWeight: 'bold',
+            transition: 'background-color 0.3s ease',
           }}
         >
           Send
         </Button>
       </Box>
-      {error && <Typography color="error" sx={{ marginTop: '20px', fontFamily: "'Times New Roman', serif" }}>{error}</Typography>}
+      {error && <Typography color="error" sx={{ marginTop: '20px', color: '#f44336' }}>{error}</Typography>}
     </Box>
   );
 };
