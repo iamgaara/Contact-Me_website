@@ -1,4 +1,3 @@
-// src/Footer.js
 import React from 'react';
 import { Box, Typography, Link } from '@mui/material';
 import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn, FaRedditAlien, FaDiscord } from 'react-icons/fa';
@@ -85,26 +84,25 @@ const Footer = () => {
           '@media (max-width: 600px)': {
             bottom: '5px',
             right: '5px',
-            fontSize: '16px', // Smaller icons on small screens
           },
         }}
       >
-        <Link href="#" sx={{ color: 'white', fontSize: '20px' }}>
+        <Link href="#" sx={{ color: 'white', fontSize: { xs: '16px', sm: '20px' } }}>
           <FaFacebookF />
         </Link>
-        <Link href="#" sx={{ color: 'white', fontSize: '20px' }}>
+        <Link href="#" sx={{ color: 'white', fontSize: { xs: '16px', sm: '20px' } }}>
           <FaTwitter />
         </Link>
-        <Link href="#" sx={{ color: 'white', fontSize: '20px' }}>
+        <Link href="#" sx={{ color: 'white', fontSize: { xs: '16px', sm: '20px' } }}>
           <FaInstagram />
         </Link>
-        <Link href="#" sx={{ color: 'white', fontSize: '20px' }}>
+        <Link href="#" sx={{ color: 'white', fontSize: { xs: '16px', sm: '20px' } }}>
           <FaLinkedinIn />
         </Link>
-        <Link href="#" sx={{ color: 'white', fontSize: '20px' }}>
+        <Link href="#" sx={{ color: 'white', fontSize: { xs: '16px', sm: '20px' } }}>
           <FaRedditAlien />
         </Link>
-        <Link href="#" sx={{ color: 'white', fontSize: '20px' }}>
+        <Link href="#" sx={{ color: 'white', fontSize: { xs: '16px', sm: '20px' } }}>
           <FaDiscord />
         </Link>
       </Box>
