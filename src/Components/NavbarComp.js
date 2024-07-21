@@ -49,13 +49,44 @@ const Navbar = () => {
           </Typography>
           {!isMobile && (
             <>
-              <Button color="inherit" component={Link} to="/home" sx={{ color: 'white' }}>
+              <Button 
+                color="inherit" 
+                component={Link} 
+                to="/home" 
+                sx={{ 
+                  color: 'white', 
+                  '&.Mui-disabled': {
+                    color: 'grey', // Set a grey color for disabled text
+                    cursor: 'not-allowed' // Change the cursor to indicate it's disabled
+                  }
+                }} 
+                disabled
+              >
                 Home
               </Button>
-              <Button color="inherit" component={Link} to="/about" sx={{ color: 'white' }}>
+              <Button 
+                color="inherit" 
+                component={Link} 
+                to="/about" 
+                sx={{ 
+                  color: 'white', 
+                  '&.Mui-disabled': {
+                    color: 'grey', // Set a grey color for disabled text
+                    cursor: 'not-allowed' // Change the cursor to indicate it's disabled
+                  }
+                }} 
+                disabled
+              >
                 About
               </Button>
-              <Button color="inherit" component={Link} to="/contact" sx={{ color: 'white' }}>
+              <Button 
+                color="inherit" 
+                component={Link} 
+                to="/contact" 
+                sx={{ 
+                  color: 'white', 
+                }}
+              >
                 Contact
               </Button>
             </>
