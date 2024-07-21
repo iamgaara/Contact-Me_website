@@ -1,6 +1,7 @@
 // src/Footer.js
 import React from 'react';
 import { Box, Typography, Link } from '@mui/material';
+import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn, FaRedditAlien, FaDiscord } from 'react-icons/fa';
 
 const Footer = () => {
   return (
@@ -12,8 +13,11 @@ const Footer = () => {
         padding: '40px 0',
         textAlign: 'center',
         fontSize: '12px',
-        position: 'relative', // Changed from 'fixed' to 'relative'
+        position: 'relative',
         width: '100%',
+        '@media (max-width: 600px)': {
+          padding: '20px 0',
+        },
       }}
     >
       <Box>
@@ -63,9 +67,46 @@ const Footer = () => {
         sx={{
           marginTop: '5px',
           fontSize: '10px',
+          '@media (max-width: 600px)': {
+            fontSize: '8px',
+          },
         }}
       >
         <Typography variant="body2">© 2024 ANI KART Pvt Ltd</Typography>
+      </Box>
+      <Box
+        sx={{
+          position: 'absolute',
+          bottom: '10px',
+          right: '10px',
+          display: 'flex',
+          gap: '10px',
+          flexWrap: 'wrap',
+          '@media (max-width: 600px)': {
+            bottom: '5px',
+            right: '5px',
+            fontSize: '16px', // Smaller icons on small screens
+          },
+        }}
+      >
+        <Link href="#" sx={{ color: 'white', fontSize: '20px' }}>
+          <FaFacebookF />
+        </Link>
+        <Link href="#" sx={{ color: 'white', fontSize: '20px' }}>
+          <FaTwitter />
+        </Link>
+        <Link href="#" sx={{ color: 'white', fontSize: '20px' }}>
+          <FaInstagram />
+        </Link>
+        <Link href="#" sx={{ color: 'white', fontSize: '20px' }}>
+          <FaLinkedinIn />
+        </Link>
+        <Link href="#" sx={{ color: 'white', fontSize: '20px' }}>
+          <FaRedditAlien />
+        </Link>
+        <Link href="#" sx={{ color: 'white', fontSize: '20px' }}>
+          <FaDiscord />
+        </Link>
       </Box>
     </Box>
   );
