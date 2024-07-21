@@ -6,6 +6,16 @@ const ContactForm = () => {
   const form = useRef();
   const [error, setError] = useState('');
 
+  const validateEmail = (email) => {
+    const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return re.test(email);
+  };
+
+  const validatePhone = (phone) => {
+    const re = /^[0-9+\-() ]+$/; // Basic phone number validation
+    return re.test(phone);
+  };
+
   const handleSave = () => {
     const formData = new FormData(form.current);
     const name = formData.get('user_name');
@@ -15,6 +25,16 @@ const ContactForm = () => {
 
     if (!name || !email || !message) {
       setError('All fields except phone number are required.');
+      return;
+    }
+
+    if (!validateEmail(email)) {
+      alert('Please enter a valid email address.');
+      return;
+    }
+
+    if (phone && !validatePhone(phone)) {
+      alert('Please enter a valid phone number.');
       return;
     }
 
@@ -33,15 +53,25 @@ const ContactForm = () => {
 
   const sendEmail = (e) => {
     e.preventDefault();
-    
+
     const formData = new FormData(form.current);
     const name = formData.get('user_name');
     const phone = formData.get('user_phone');
     const email = formData.get('user_email');
     const message = formData.get('message');
-    
+
     if (!name || !email || !message) {
       setError('All fields except phone number are required.');
+      return;
+    }
+
+    if (!validateEmail(email)) {
+      alert('Please enter a valid email address.');
+      return;
+    }
+
+    if (phone && !validatePhone(phone)) {
+      alert('Please enter a valid phone number.');
       return;
     }
 
@@ -49,13 +79,13 @@ const ContactForm = () => {
 
     emailjs.sendForm('YOUR_ACTUAL_SERVICE_ID', 'YOUR_ACTUAL_TEMPLATE_ID', form.current, 'YOUR_ACTUAL_USER_ID')
       .then((result) => {
-          console.log(result.text);
-          alert('Message sent successfully!');
-          form.current.reset();
-          localStorage.removeItem('contactForm'); // Clear saved data after sending
+        console.log(result.text);
+        alert('Message sent successfully!');
+        form.current.reset();
+        localStorage.removeItem('contactForm'); // Clear saved data after sending
       }, (error) => {
-          console.log(error.text);
-          setError('Failed to send message. Please try again.');
+        console.log(error.text);
+        setError('Failed to send message. Please try again.');
       });
   };
 
