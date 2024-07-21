@@ -78,7 +78,7 @@ const ContactForm = () => {
 
     setError('');
 
-    emailjs.sendForm('YOUR_ACTUAL_SERVICE_ID', 'YOUR_ACTUAL_TEMPLATE_ID', form.current, 'YOUR_ACTUAL_USER_ID')
+    emailjs.sendForm('service_k40u48q', 'template_lpiv0lo', form.current, '25SMKJ0EEp2J7g8o-')
       .then((result) => {
           console.log(result.text);
           alert('Message sent successfully!');
