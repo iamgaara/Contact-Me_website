@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/Contact-Me_website/static/css/main.85a1a494.css",
-    "main.js": "/Contact-Me_website/static/js/main.46b839d5.js",
-    "static/media/1.jpg": "/Contact-Me_website/static/media/1.cf2cd2b4289548e1e3d7.jpg",
-    "static/media/slick.svg": "/Contact-Me_website/static/media/slick.2630a3e3eab21c607e21.svg",
-    "static/media/slick.eot": "/Contact-Me_website/static/media/slick.a4e97f5a2a64f0ab1323.eot",
-    "static/media/slick.ttf": "/Contact-Me_website/static/media/slick.c94f7671dcc99dce43e2.ttf",
-    "static/media/slick.woff": "/Contact-Me_website/static/media/slick.295183786cd8a1389865.woff",
-    "index.html": "/Contact-Me_website/index.html",
-    "main.85a1a494.css.map": "/Contact-Me_website/static/css/main.85a1a494.css.map",
-    "main.46b839d5.js.map": "/Contact-Me_website/static/js/main.46b839d5.js.map"
+    "main.css": "/contact/static/css/main.5ab8db7d.css",
+    "main.js": "/contact/static/js/main.39980b4a.js",
+    "static/media/1.jpg": "/contact/static/media/1.cf2cd2b4289548e1e3d7.jpg",
+    "static/media/slick.svg": "/contact/static/media/slick.2630a3e3eab21c607e21.svg",
+    "static/media/slick.eot": "/contact/static/media/slick.a4e97f5a2a64f0ab1323.eot",
+    "static/media/slick.ttf": "/contact/static/media/slick.c94f7671dcc99dce43e2.ttf",
+    "static/media/slick.woff": "/contact/static/media/slick.295183786cd8a1389865.woff",
+    "index.html": "/contact/index.html",
+    "main.5ab8db7d.css.map": "/contact/static/css/main.5ab8db7d.css.map",
+    "main.39980b4a.js.map": "/contact/static/js/main.39980b4a.js.map"
   },
   "entrypoints": [
-    "static/css/main.85a1a494.css",
-    "static/js/main.46b839d5.js"
+    "static/css/main.5ab8db7d.css",
+    "static/js/main.39980b4a.js"
   ]
 }
