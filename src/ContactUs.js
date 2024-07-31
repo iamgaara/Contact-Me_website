@@ -3,7 +3,6 @@ import emailjs from '@emailjs/browser';
 import { Box, Button, TextField, Typography } from '@mui/material';
 import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css'; // Import the style for phone number input
-import AnimatedButton from './AnimatedButton'; // Import the new button component
 
 const ContactForm = () => {
   const form = useRef();
@@ -194,7 +193,7 @@ const ContactForm = () => {
         >
           Save
         </Button>
-        <AnimatedButton 
+        <Button 
           variant="contained" 
           color="primary" 
           type="submit"
@@ -210,7 +209,7 @@ const ContactForm = () => {
           }}
         >
           Send
-        </AnimatedButton>
+        </Button>
       </Box>
       {error && <Typography color="error" sx={{ marginTop: '20px', color: '#f44336' }}>{error}</Typography>}
     </Box>
