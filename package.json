@@ -2,7 +2,7 @@
   "name": "contact-us",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://iamgaara.github.io/Contact-Me_website",
+  "homepage": "https://iamgaara.github.io/contact",
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
     "@emotion/react": "^11.13.0",
