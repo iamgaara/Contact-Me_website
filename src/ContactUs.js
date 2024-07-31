@@ -5,7 +5,6 @@ import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css'; // Import the style for phone number input
 import AnimatedButton from './AnimatedButton'; // Import the new button component
 
-
 const ContactForm = () => {
   const form = useRef();
   const [error, setError] = useState('');
