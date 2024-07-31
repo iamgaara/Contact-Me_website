@@ -3,28 +3,21 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './Components/NavbarComp'; // Ensure this path is correct
 import Home from './Components/Home'; // Ensure this path is correct
 import About from './Components/About'; // Ensure this path is correct
-import Contact from './Components/Contact'; // Ensure this path is correct
-import ContactForm from './ContactUs'; // Ensure this path is correct
-import Footer from './Footer'; // Import the Footer component
-
+import ContactAndFAQ from './ContactAndFAQ'; // Ensure this path is correct
+import Footer from './Footer'; // Ensure this path is correct
 
 function App() {
-  const appStyle = {
-    textAlign: 'center',
-  };
-
   return (
     <Router>
       <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
         <Navbar />
-        <main style={{ flex: 1 }}>
+        <main style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
           <Routes>
             <Route path="/home" element={<Home />} />
             <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
+            <Route path="/contact" element={<ContactAndFAQ />} />
             <Route path="/" element={<Home />} />
           </Routes>
-          <ContactForm />
         </main>
         <Footer />
       </div>
